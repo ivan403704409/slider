@@ -19,22 +19,26 @@ Slider.prototype = {
     
   },
   
+  //切换
   _switch: function (){
     
     
     
   },
   
+  //开始自动播放
   _startAutoPlay: function (){
     
     
   },
   
-  _stopAutoPlay: fuction (){
+  //停止自动播放
+  _stopAutoPlay: function (){
     
     
   },
   
+  //是否向左滑
   _isGoLeft : function (){
     
     
