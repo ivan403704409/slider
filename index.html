@@ -3,9 +3,30 @@
 	<title></title>
 </head>
 <style type="text/css">
-	
+*{ margin: 0; padding: 0; list-style: none; }
+#slider{ width: 400px; height: 200px; overflow: hidden; }
+#slider .ctn li{ position: absolute; width: 400px; height: 200px; }
 </style>
 <body>
-
+<div id="slider">
+	<div class="ctnliWraper">
+		<ul class="ctn">
+			<li style="background-color: red;">1</li>
+			<li style="background-color: blue;">2</li>
+			<li style="background-color: green;">3</li>
+			<li style="background-color: silver;">4</li>
+		</ul>
+	</div>
+	<div class="ctl">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+ new Slider('slider').init();
+</script>
 </body>
 </html>
