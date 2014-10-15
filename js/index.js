@@ -1,10 +1,11 @@
-function Slider(sEle){
+function Slider(sId){
   
   this.lastIndex = 0;
   this.curIndex = 0;
-  this.slider = document.getElementById(sEle);
+  this.slider = document.getElementById(sId);
   this.controls = this.slider.getElementsByClassName('ctl')[0].children;
   this.ctn = this.slider.getElementsByClassName('ctn')[0].children;
+  this.width = parseFloat( this.slider.style.width );
 
 }
 
@@ -16,6 +17,11 @@ Slider.prototype = {
     var oSlider = self.slider;
     self._bind();
     
+  },
+  
+  //重置宽度，要在slider宽度改变时才调用
+  resetWidth: function (){
+    this.width = parseFloat(this.slider.style.width); 
   },
   
   _bind: function (){
