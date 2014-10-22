@@ -5,8 +5,6 @@
     2.左右拨动
 
 */
-
-
 function Slider(sId){
   var self = this;
   this.lastIndex = 0;
@@ -18,10 +16,7 @@ function Slider(sId){
   this.width = parseFloat( getComputedStyle(self.ctn[0], false)['width'] );
   this.startX = 0;
   this.endX = 0;
-
 }
-
-
 Slider.prototype = {
   
   init: function (){
@@ -71,8 +66,9 @@ Slider.prototype = {
       var ev = ev.touches[0];
       var disX = ev.clientX - self.startX;
       self.endX = ev.clientX;
-      console.log((disX + 320*self.curIndex))
-      self.ctnBox.style.webkitTransform = 'translateX(-'+ (-disX + 320*self.curIndex) +'px)';
+      console.log(-disX + 320*self.curIndex)
+      self.ctnBox.style.webkitTransform = 'translateX('+ (disX - 320*self.curIndex) +'px)';
+      self.ctnBox.style.webkitTransition = 'inherit';
 
   },
 
@@ -83,25 +79,11 @@ Slider.prototype = {
   },
   
   //切换
-  _switch: function (curIndex){
-    
+  _switch: function (curIndex){    
     var self = this;
     self._isGoLeft();
     self.ctnBox.style.webkitTransform = 'translateX(-' + 320*self.curIndex + 'px)';
     self.ctnBox.style.webkitTransition = '400ms ease-out';
-    //左切换
-   /* if( self._isGoLeft() === true ){
-
-      self.ctnBox.style.webkitTransform = 'translateX(-' + 320*self.curIndex + 'px)';
-      self.ctnBox.style.webkitTransition = '400ms ease-out';
-
-    //右切换
-    }else if(self._isGoLeft() === false){
-
-      self.ctnBox.style.webkitTransform = 'translateX(320px)';
-      self.ctnBox.style.webkitTransition = '400ms ease-out';
-    }*/
-    
   },
   
   //开始自动播放
@@ -120,17 +102,24 @@ Slider.prototype = {
   _isGoLeft : function (){
     var self = this;
     var bLeft = true;
-    console.log(self.endX - self.startX);
+    var dis = self.endX - self.startX;
+    console.log(self.startX)
+    console.log(self.endX)
 
     if( self.endX === 0 ){
       return;
-    }else if( self.endX - self.startX > 100 ){
+
+    }else if( dis > 100 ){
+
       bLeft = false;
       self.curIndex -= 1;
       if( self.curIndex === -1 )self.curIndex = 0;
-    }else if(self.endX - self.startX < 100){
+
+    }else if(dis < 100){
+
       self.curIndex += 1;
       if( self.curIndex === self.ctn.length )self.curIndex = self.ctn.length - 1;
+
     }
     return bLeft;    
   }, 
