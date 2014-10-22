@@ -1,11 +1,14 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 	<title></title>
 </head>
 <style type="text/css">
-*{ margin: 0; padding: 0; list-style: none; }
-#slider{ width: 400px; height: 200px; overflow: hidden; }
-#slider .ctn li{ position: absolute; width: 400px; height: 200px; }
+*{ margin: 0; padding: 0; list-style: none; font-size: 2rem; }
+#slider{ width: 320px; height: 200px; overflow: hidden; }
+.ctnliWraper{ position: relative; width: 320px; height: 400px; overflow: hidden; }
+#slider .ctn{ position: absolute; width: 100%; left: 0; top:0; height: 200px; }
+#slider .ctn li{ float:left; width: 320px;  height: 200px; }
 </style>
 <body>
 <div id="slider">
