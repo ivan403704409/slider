@@ -134,7 +134,7 @@ function Slider(sId) {
     _switch: function() {
       var self = this;
       self._ctnBox.style.webkitTransform = 'translateX(-' + self._width * self._curIndex + 'px)';
-      self._ctnBox.style.webkitTransition = self._speed + 'ms' + ' ease-out';
+      self._ctnBox.style.webkitTransition = self._speed + 'ms ease-out';
 
       self._ctrl[self._lastIndex].className = '';
       self._ctrl[self._curIndex].className = 'j-active';
@@ -164,6 +164,8 @@ function Slider(sId) {
     _isGoLeft: function() {
       var self = this;
       var dis = self._endX - self._startX;
+
+      //快速滑动
       if (self._endTime - self._startTime < 200) {
         if (dis === 0) {
           return;
@@ -172,6 +174,8 @@ function Slider(sId) {
         } else { //向左
           self._addCurIndex();
         }
+
+      //慢速滑动
       } else {
         if (Math.abs(dis) <= 60) { //不动
           return;
@@ -197,6 +201,9 @@ function Slider(sId) {
       self._curIndex--;
       if (self._curIndex === -1) self._curIndex = self._ctnLen - 1;
     },
+
+    constructor: Slider
+  };
 
     constructor: Slider
   };
