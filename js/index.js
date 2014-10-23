@@ -16,7 +16,7 @@
     opts:   可选
         {
           autoPlay: true | false,   是否自动播放，默认true
-          autoPlayTime: number,     自动播放时间间隔，当autoPlay为true时才有效, 默认值为 3000
+          autoPlayTime: number,     自动播放时间间隔，当autoPlay为true时才有效, 默认值为 5000
           speed: number             切换的速度, 默认值为 400
         }
 
@@ -43,7 +43,7 @@ function Slider(sId) {
   self._endTime = 0;
   self._timer = null;
   self._autoPlay = true;
-  self._time = 3000;
+  self._autoPlaytime = 5000;
   self._speed = 400;
 }
 Slider.prototype = {
@@ -53,7 +53,7 @@ Slider.prototype = {
     var oSlider = self._slider;
     self._setLayout();
     if (opts && opts.autoPlay === false) self._autoPlay = false;
-    if (opts && opts.time) self._time = opts.time;
+    if (opts && opts.autoPlayTime) self._autoPlaytime = opts.autoPlayTime;
     if (opts && opts.speed) self._speed = opts.speed;
     self._autoPlay && self._startAutoPlay();
     self._bind();
@@ -150,7 +150,7 @@ Slider.prototype = {
       self._addCurIndex();
       self._switch();
 
-    }, self._time);
+    }, self._autoPlaytime);
 
   },
 
